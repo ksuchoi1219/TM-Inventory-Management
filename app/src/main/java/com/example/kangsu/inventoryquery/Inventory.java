@@ -4,30 +4,36 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import android.os.Bundle;
-import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Intent;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
 
-public class Inventory extends AppCompatActivity {
+public class Inventory extends AppCompatActivity implements OnClickListener {
 
-
+//========= C A L E N D A R ===========//
     private Button changeDate;
-
     private int mYear;
     private int mMonth;
     private int mDay;
     static final int DATE_PICKER_ID = 1111;
     private TextView displayDate;
-    private Button scannerButton;
 
+//========== S C A N N E R ============//
+    private Button scannerButton;
+    private TextView displayBarcode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +41,11 @@ public class Inventory extends AppCompatActivity {
 
         changeDate = (Button)findViewById(R.id.pickDate);
         displayDate = (TextView)findViewById(R.id.userDate);
+
         scannerButton = (Button) findViewById(R.id.scanButton);
-        scannerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), BarcodeScanner.class);
-                startActivity(intent);
-            }
-        });
+        displayBarcode = (TextView) findViewById(R.id.userBarcode);
+        scannerButton.setOnClickListener(this);
+
         final Calendar c = Calendar.getInstance();
         mYear  = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
@@ -95,6 +98,24 @@ public class Inventory extends AppCompatActivity {
 
         }
     };
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.scanButton) {
+            IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+            scanIntegrator.initiateScan();
+        }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanningResult != null) {
+            String scanContent = scanningResult.getContents();
+            //String scanFormat = scanningResult.getFormatName();
+            displayBarcode.setText(scanContent);
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "No scan data received!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 }
 
 

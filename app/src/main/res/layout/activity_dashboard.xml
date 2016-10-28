@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imports"
         android:onClick="onButtonClick"
-        android:textColor="#F3E721"
+        android:textColor="#FFFFFF"
 
         android:background="@drawable/button"
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:onClick="onButtonClick"
-        android:textColor="#F3E721"
+        android:textColor="#FFFFFF"
 
         android:layout_marginLeft="55dp"
         android:layout_marginStart="55dp"
@@ -47,7 +47,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/TM"
+        android:src="@drawable/trademark"
         android:id="@+id/TM"
         android:layout_marginBottom="57dp"
         android:layout_alignParentBottom="true"

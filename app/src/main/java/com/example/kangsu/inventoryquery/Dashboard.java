@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity{
 
     private Button inventoryButton;
     private Button importsButton;
