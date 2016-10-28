@@ -10,16 +10,16 @@ import android.widget.Button;
 
 public class Login extends AppCompatActivity{
 
-    private Button loginButton;
+    private Button lButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.login);
         addListenerOnButton();
 
-        loginButton = (Button)findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        lButton = (Button)findViewById(R.id.loginButton);
+        lButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), Dashboard.class);
                 startActivityForResult(myIntent, 0);
@@ -32,8 +32,8 @@ public class Login extends AppCompatActivity{
 
     private void addListenerOnButton() {
         final Context context = this;
-        loginButton = (Button) findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        lButton = (Button) findViewById(R.id.loginButton);
+        lButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Dashboard.class);
