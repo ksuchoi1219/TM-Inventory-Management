@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kangsu.inventoryquery.Login">
+
+    <EditText
+        android:id="@+id/userName"
+        android:hint="Enter Username"
+        android:focusable="true"
+        android:textColorHighlight="#ff7eff15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp" />
+    <EditText
+        android:id="@+id/password"
+        android:text="1111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginTop="41dp"
+        android:layout_alignTop="@+id/userName"
+        android:layout_alignLeft="@+id/userName"
+        android:layout_alignStart="@+id/userName"
+        android:layout_alignRight="@+id/userName"
+        android:layout_alignEnd="@+id/userName" />
+
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="login"
+        android:layout_marginBottom="101dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/userName"
+        android:layout_alignEnd="@+id/userName"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/trademark"
+        android:id="@+id/TM"
+        android:layout_marginBottom="18dp"
+        android:layout_above="@+id/userName"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
