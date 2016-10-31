@@ -64,31 +64,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/textItemName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/scanButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginTop="37dp"
-        android:layout_below="@+id/scanButton"
-        android:layout_alignLeft="@+id/textDate"
-        android:layout_alignStart="@+id/textDate" />
-
-    <Button
-        android:text="Scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scanButton"
-        android:onClick="onButtonClick"
-        android:background="@drawable/inventorybuttons"
-        android:textColor="#FFFFFF"
-        android:layout_below="@+id/pickDate"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Date"
@@ -97,13 +76,14 @@
         android:id="@+id/pickDate"
         android:onClick="onButtonClick"
         android:textColor="#FFFFFF"
-        android:background="@drawable/inventorybuttons"
+        android:background="@drawable/importbuttons"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+
     <TextView
-        android:text="Your Item Name"
+        android:text="Your item name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userItemName"
@@ -122,22 +102,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/textQuantity"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <EditText
-        android:text="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/userQuantity"
-        android:layout_alignBaseline="@+id/textQuantity"
-        android:layout_alignBottom="@+id/textQuantity"
-        android:layout_toRightOf="@+id/userBarcode"
-        android:layout_toEndOf="@+id/userBarcode" />
 
     <TextView
         android:text="Price per Item"
@@ -145,7 +113,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textPriceItems"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -169,7 +137,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textVendor"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="85dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -182,8 +150,53 @@
         android:layout_toRightOf="@+id/textVendor"
         android:layout_toEndOf="@+id/textItemName"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="85dp"
         android:layout_below="@+id/textItemName"
         android:layout_marginStart="12dp"
         android:textColor="#A9A9A9"/>
+
+    <EditText
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/userQuantity"
+        android:layout_below="@+id/userItemName"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
+
+    <Button
+        android:text="Scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scanButton"
+        android:onClick="onButtonClick"
+        android:background="@drawable/importbuttons"
+        android:textColor="#FFFFFF"
+        android:layout_alignBaseline="@+id/userBarcode"
+        android:layout_alignBottom="@+id/userBarcode"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_above="@+id/userItemName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:onClick="onButtonClick"
+        android:background="@drawable/importbuttons"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/userDate"
+        android:layout_alignEnd="@+id/userDate" />
 </RelativeLayout>
