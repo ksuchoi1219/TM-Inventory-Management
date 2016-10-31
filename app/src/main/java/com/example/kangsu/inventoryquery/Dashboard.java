@@ -29,7 +29,7 @@ public class Dashboard extends AppCompatActivity{
         importsButton = (Button)findViewById(R.id.imports);
         importsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), Inventory.class);
+                Intent myIntent = new Intent(view.getContext(), Import.class);
                 startActivityForResult(myIntent, 0);
             }
         });

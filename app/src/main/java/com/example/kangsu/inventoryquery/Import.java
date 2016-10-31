@@ -18,9 +18,9 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 
-public class Inventory extends AppCompatActivity implements OnClickListener {
+public class Import extends AppCompatActivity implements OnClickListener {
 
-//Calendar: Variables
+    //Calendar: Variables
     private Button changeDate;
     private int mYear;
     private int mMonth;
@@ -28,13 +28,13 @@ public class Inventory extends AppCompatActivity implements OnClickListener {
     static final int DATE_PICKER_ID = 1111;
     private TextView displayDate;
 
-//Barcode Scan: Variables
+    //Barcode Scan: Variables
     private Button scannerButton;
     private TextView displayBarcode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inventory_dashboard);
+        setContentView(R.layout.import_dashboard);
 
         //Calendar: Buttons
         changeDate = (Button)findViewById(R.id.pickDate);
