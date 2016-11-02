@@ -33,17 +33,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="5.0" />
+            android:text="Samsung UN65KS80" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Android Lollipop" />
+            android:text="4" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="21" />
+            android:text="Atlanta, GA" />
     </TableRow>
 
     <TableRow
@@ -53,17 +53,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="4.4" />
+            android:text="Kindle Fire HD" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Android Kitkat" />
+            android:text="8" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="19" />
+            android:text="Los Angeles, CA" />
     </TableRow>
     <TableRow
         android:background="#ECEFF1"
@@ -72,16 +72,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="4.3" />
+            android:text="Ben-Amun Jewerly" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Android Jelly Bean" />
+            android:text="12" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="18" />
+            android:text="Seoul, S.KOREA" />
     </TableRow>
 </TableLayout>
