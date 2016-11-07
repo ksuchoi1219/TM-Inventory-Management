@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#282828"
     android:layout_height="match_parent">
 
     <TableRow
-        android:background="#567EBC"
+        android:background="#5d5d5d"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
@@ -27,13 +28,13 @@
     </TableRow>
 
     <TableRow
-        android:background="#ECEFF1"
+        android:background="#5d5d5d"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Samsung UN65KS80" />
+            android:text="Product 1" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,17 +44,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Atlanta, GA" />
+            android:text="Company A" />
     </TableRow>
 
     <TableRow
-        android:background="#ECEFF1"
+        android:background="#5d5d5d"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Kindle Fire HD" />
+            android:text="Product 2" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,16 +64,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Los Angeles, CA" />
+            android:text="Company B" />
     </TableRow>
     <TableRow
-        android:background="#ECEFF1"
+        android:background="#5d5d5d"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ben-Amun Jewerly" />
+            android:text="Product 3" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,6 +83,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Seoul, S.KOREA" />
+            android:text="Company C" />
     </TableRow>
 </TableLayout>

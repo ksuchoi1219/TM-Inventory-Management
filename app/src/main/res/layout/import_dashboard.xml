@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#282828"
     android:id="@+id/import_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +20,10 @@
         android:layout_marginTop="17dp"
         android:layout_below="@+id/pickDate"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="22sp"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:text="8801154575909"
@@ -33,7 +37,9 @@
         android:layout_alignBaseline="@+id/barcodeText"
         android:layout_alignBottom="@+id/barcodeText"
         android:layout_toRightOf="@+id/barcodeText"
-        android:layout_toEndOf="@+id/barcodeText" />
+        android:layout_toEndOf="@+id/barcodeText"
+        android:textColor="#FFFFFF"
+        android:typeface="sans" />
 
     <TextView
         android:text="Date"
@@ -46,7 +52,9 @@
         android:layout_alignBaseline="@+id/pickDate"
         android:layout_alignBottom="@+id/pickDate"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:text="12-19-1993"
@@ -56,7 +64,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_alignBottom="@+id/textDate"
         android:layout_alignLeft="@+id/userBarcode"
-        android:layout_alignStart="@+id/userBarcode" />
+        android:layout_alignStart="@+id/userBarcode"
+        android:textSize="22sp"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:text="Item Name"
@@ -67,19 +78,10 @@
         android:layout_marginTop="70dp"
         android:layout_below="@+id/scanButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pickDate"
-        android:onClick="onButtonClick"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/importbuttons"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="22sp"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
 
     <TextView
@@ -105,7 +107,9 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:text="Price per Item"
@@ -116,7 +120,9 @@
         android:layout_marginTop="45dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:text="10.00"
@@ -130,17 +136,9 @@
         android:layout_toRightOf="@+id/textPriceItems"
         android:layout_toEndOf="@+id/textPriceItems"
         android:layout_marginLeft="54dp"
-        android:layout_marginStart="54dp" />
-    <TextView
-        android:text="Vendor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textVendor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="85dp"
-        android:layout_below="@+id/textItemName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginStart="54dp"
+        android:textColor="#FFFFFF" />
+
     <TextView
         android:text="Your vendor here"
         android:layout_width="wrap_content"
@@ -164,20 +162,8 @@
         android:id="@+id/userQuantity"
         android:layout_below="@+id/userItemName"
         android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
-
-    <Button
-        android:text="Scan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scanButton"
-        android:onClick="onButtonClick"
-        android:background="@drawable/importbuttons"
-        android:textColor="#FFFFFF"
-        android:layout_alignBaseline="@+id/userBarcode"
-        android:layout_alignBottom="@+id/userBarcode"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignStart="@+id/editText"
+        android:textColor="#FFFFFF" />
 
     <View
         android:layout_width="match_parent"
@@ -193,10 +179,48 @@
         android:layout_height="wrap_content"
         android:id="@+id/doneButton"
         android:onClick="onButtonClick"
-        android:background="@drawable/importbuttons"
+        android:background="@drawable/button"
         android:textColor="#FFFFFF"
         android:layout_marginBottom="47dp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/userDate"
         android:layout_alignEnd="@+id/userDate" />
+
+    <TextView
+        android:text="Vendor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textVendor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignBaseline="@+id/userVendor"
+        android:layout_alignBottom="@+id/userVendor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:typeface="sans"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:text="Scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scanButton"
+        android:onClick="onButtonClick"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:layout_alignBaseline="@+id/userBarcode"
+        android:layout_alignBottom="@+id/userBarcode"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickDate"
+        android:onClick="onButtonClick"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
