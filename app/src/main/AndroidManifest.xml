@@ -21,8 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard"></activity>
+        <activity android:name=".Register"></activity>
         <activity android:name=".Inventory"></activity>
         <activity android:name=".Import"></activity>
+        <activity android:name=".Setting"></activity>
 
     </application>
 

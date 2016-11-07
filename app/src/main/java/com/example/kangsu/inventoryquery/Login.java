@@ -1,5 +1,6 @@
 package com.example.kangsu.inventoryquery;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class Login extends AppCompatActivity{
     private ConnectionClass connectionClass;
     private EditText edtuserid,edtpass;
     private Button btnlogin;
+    private Button btnregister;
     private ProgressBar pbbar;
 
     @Override
@@ -42,9 +44,20 @@ public class Login extends AppCompatActivity{
 
             }
         });
+        addListenerOnButton();
     }
 
-
+    private void addListenerOnButton() {
+        final Context context = this;
+        btnregister = (Button) findViewById(R.id.registerButton);
+        btnregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Register.class);
+                startActivity(intent);
+            }
+        });
+    }
     public class DoLogin extends AsyncTask<String,String,String>
     {
         String z = "";
@@ -83,7 +96,7 @@ public class Login extends AppCompatActivity{
                     if (con == null) {
                         z = "Error in connection with SQL server";
                     } else {
-                        String query = "select * from Usertbl where UserId='" + userid + "' and password='" + password + "'";
+                        String query = "select * from Usertbl where userName='" + userid + "' and password='" + password + "'";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
 

@@ -3,6 +3,7 @@ package com.example.kangsu.inventoryquery;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -10,11 +11,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Calendar;
 
 
@@ -30,7 +35,15 @@ public class Import extends AppCompatActivity implements OnClickListener {
 
     //Barcode Scan: Variables
     private Button scannerButton;
-    private TextView displayBarcode;
+    private EditText displayBarcode;
+
+    private Button importButton;
+    private ConnectionClass connectionClass;
+    private EditText productName;
+    private EditText quantity;
+    private EditText price;
+    private EditText vendor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +59,7 @@ public class Import extends AppCompatActivity implements OnClickListener {
 
         //Barcode Scan: Buttons
         scannerButton = (Button) findViewById(R.id.scanButton);
-        displayBarcode = (TextView) findViewById(R.id.userBarcode);
+        displayBarcode = (EditText) findViewById(R.id.userBarcode);
         scannerButton.setOnClickListener(this);
 
 
@@ -62,6 +75,15 @@ public class Import extends AppCompatActivity implements OnClickListener {
 
             }
 
+        });
+
+        importButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DoImport doImport = new DoImport();
+                doImport.execute("");
+
+            }
         });
 
     }
@@ -108,6 +130,54 @@ public class Import extends AppCompatActivity implements OnClickListener {
             toast.show();
         }
     }
+    public class DoImport extends AsyncTask<String,String,String>
+    {
+        String z = "";
+        Boolean isSuccess = false;
+
+
+        String userScanned = displayBarcode.getText().toString();
+        String userProduct = productName.getText().toString();
+        String userQuantity = quantity.getText().toString();
+        String userPrice = price.getText().toString();
+        String userVendor = vendor.getText().toString();
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            if(userScanned.trim().equals(""))
+                z = "Please enter barcode!";
+//            if(userScanned.trim().equals("")|| userProduct.trim().equals("") || userQuantity.trim().equals("") || userPrice.trim().equals("") || userVendor.trim().equals(""))
+//                z = "Please enter all required criteria!";
+            else {
+                try {
+                    Connection con = connectionClass.CONN();
+                    if (con == null) {
+                        z = "Error in connection with SQL server";
+                    } else {
+                        String query = "INSERT INTO Producttbl (SKU) VALUES ('" + userScanned + "')";
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(query);
+
+                        if(rs.next()) {
+                            z = "Login successful";
+                            isSuccess=true;
+                        }
+                        else {
+                            z = "Invalid Credentials";
+                            isSuccess = false;
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    isSuccess = false;
+                    z = "Exceptions";
+                }
+            }
+            return z;
+        }
+    }
+
 }
 
 

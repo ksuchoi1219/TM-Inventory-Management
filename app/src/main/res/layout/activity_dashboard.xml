@@ -1,53 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#282828"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.kangsu.inventoryquery.Dashboard">
+    android:padding="10dp"
+    tools:context="com.example.kangsu.inventoryquery.Dashboard"
+    android:orientation="vertical">
 
     <Button
-        android:text="Imports"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imports"
-        android:onClick="onButtonClick"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/button"
-        android:layout_marginRight="52dp"
-        android:layout_marginEnd="52dp"
-        android:layout_alignBaseline="@+id/inventory"
-        android:layout_alignBottom="@+id/inventory"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:backgroundTint="#00aa55"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/inventoryButton"
+        android:text="Inventory"  />
 
     <Button
-        android:text="Inventory"
-        android:id="@+id/inventory"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:onClick="onButtonClick"
-        android:textColor="#FFFFFF"
-        android:layout_marginLeft="55dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="61dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:backgroundTint="#00aa55"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/importButton"
+        android:text="Import" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00aa55"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/settingButton"
+        android:text="Setting" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="match_parent"
         android:src="@drawable/trademark"
         android:id="@+id/TM"
-        android:layout_marginBottom="57dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center"
+        />
 
-</RelativeLayout>
+</LinearLayout>

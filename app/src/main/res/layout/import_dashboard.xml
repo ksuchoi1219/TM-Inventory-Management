@@ -25,7 +25,7 @@
         android:typeface="sans"
         android:textColor="#FFFFFF" />
 
-    <TextView
+    <EditText
         android:text="8801154575909"
         android:textSize="18dp"
         android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
         android:textColor="#FFFFFF" />
 
 
-    <TextView
+    <EditText
         android:text="Your item name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textPriceItems"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/textItemName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -139,7 +139,7 @@
         android:layout_marginStart="54dp"
         android:textColor="#FFFFFF" />
 
-    <TextView
+    <EditText
         android:text="Your vendor here"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -28,13 +28,9 @@ public class ConnectionClass {
         Connection conn = null;
         String ConnURL = null;
         try {
-            Log.e("t", "Connecting");
             Class.forName(classs).newInstance();
-            Log.e("t", "Driver connected");
-            Log.e("t", "DB connecting");
             ConnURL = "jdbc:jtds:sqlserver://" + ip + ";" + "databaseName=" + db + ";user=" + un + ";password=" + password + ";";
             conn = DriverManager.getConnection(ConnURL);
-            Log.e("t", "Connected");
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
         } catch (ClassNotFoundException e) {

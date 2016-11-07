@@ -18,14 +18,18 @@
         android:padding="10dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TM INVENTORY"
+            android:text="New User?"
             android:typeface="sans"
-            android:textSize="35sp"
+            android:textSize="21sp"
             android:textColor="#00aa55"
             android:textStyle="bold"
-            android:gravity="center" />
+            android:gravity="center"
+            android:id="@+id/text1"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="match_parent"
@@ -36,9 +40,35 @@
             android:textColorHint="#ffffff"
             android:background="#5d5d5d"
             android:padding="10dp"
-            android:hint="USER ID"
+            android:hint="FIRST NAME"
             android:textSize="20sp"
-            android:id="@+id/userId" />
+            android:id="@+id/userFName" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textColorHint="#ffffff"
+            android:background="#5d5d5d"
+            android:padding="10dp"
+            android:hint="LAST NAME"
+            android:textSize="20sp"
+            android:id="@+id/userLName" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textColorHint="#ffffff"
+            android:background="#5d5d5d"
+            android:padding="10dp"
+            android:hint="USERNAME"
+            android:textSize="20sp"
+            android:id="@+id/userID" />
 
         <EditText
             android:layout_width="match_parent"
@@ -51,25 +81,29 @@
             android:background="#5d5d5d"
             android:padding="10dp"
             android:inputType="textPassword"
-            android:layout_marginTop="5dp"
-            android:id="@+id/password" />
+            android:layout_marginTop="10dp"
+            android:id="@+id/userPassword" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="CONFIRM PASSWORD"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textStyle="bold"
+            android:background="#5d5d5d"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:id="@+id/userConfirm" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#00aa55"
             android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/loginButton"
-            android:text="Login" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00aa55"
-            android:textColor="#ffffff"
+
             android:textStyle="bold"
             android:textSize="20sp"
             android:padding="10dp"
@@ -83,4 +117,17 @@
             android:layout_gravity="center"
             android:id="@+id/pbbar" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TM INVENTORY"
+        android:typeface="sans"
+        android:textSize="30sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
