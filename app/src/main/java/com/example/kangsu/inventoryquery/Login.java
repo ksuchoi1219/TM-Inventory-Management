@@ -37,6 +37,8 @@ public class Login extends AppCompatActivity{
         pbbar.setVisibility(View.GONE);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
                 DoLogin doLogin = new DoLogin();
@@ -89,19 +91,19 @@ public class Login extends AppCompatActivity{
         @Override
         protected String doInBackground(String... params) {
             if(userid.trim().equals("")|| password.trim().equals(""))
-                z = "Please enter User Id and Password";
+                z = "Please enter username and password!";
             else {
                 try {
                     Connection con = connectionClass.CONN();
                     if (con == null) {
-                        z = "Error in connection with SQL server";
+                        z = "Error in connection with SQL server!";
                     } else {
                         String query = "select * from Usertbl where userName='" + userid + "' and password='" + password + "'";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
 
                         if(rs.next()) {
-                            z = "Login successful";
+                            z = "Login Successful!";
                             isSuccess=true;
                         }
                         else {

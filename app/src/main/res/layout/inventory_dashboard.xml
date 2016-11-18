@@ -5,84 +5,94 @@
     android:layout_height="match_parent">
 
     <TableRow
-        android:background="#5d5d5d"
+        android:background="#cccccc"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:layout_weight="1"
             android:text="Name" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:text="In Stock" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:text="Vendor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:text="Date" />
+    </TableRow>
+    <View android:layout_width="match_parent"
+        android:background="#000000"
+        android:layout_height="2dp" />
+    <TableRow
+        android:background="#ffffff"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:id="@+id/name1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:id="@+id/quantity1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:id="@+id/vendor1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:id="@+id/date1" />
     </TableRow>
 
     <TableRow
-        android:background="#5d5d5d"
+        android:background="#ffffff"
         android:padding="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Product 1" />
+            android:textColor="#000000"
+            android:id="@+id/name2" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="4" />
+            android:textColor="#000000"
+            android:id="@+id/quantity2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:id="@+id/vendor2" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Company A" />
+            android:textColor="#000000"
+            android:id="@+id/date2" />
     </TableRow>
 
-    <TableRow
-        android:background="#5d5d5d"
-        android:padding="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Product 2" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Company B" />
-    </TableRow>
-    <TableRow
-        android:background="#5d5d5d"
-        android:padding="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Product 3" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="12" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Company C" />
-    </TableRow>
 </TableLayout>

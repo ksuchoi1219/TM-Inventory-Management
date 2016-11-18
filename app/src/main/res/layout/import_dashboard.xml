@@ -26,7 +26,6 @@
         android:textColor="#FFFFFF" />
 
     <EditText
-        android:text="8801154575909"
         android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +38,9 @@
         android:layout_toRightOf="@+id/barcodeText"
         android:layout_toEndOf="@+id/barcodeText"
         android:textColor="#FFFFFF"
-        android:typeface="sans" />
+        android:typeface="sans"
+        android:hint="1234"
+        android:textColorHint="#808080"/>
 
     <TextView
         android:text="Date"
@@ -85,7 +86,6 @@
 
 
     <EditText
-        android:text="Your item name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userItemName"
@@ -96,7 +96,9 @@
         android:layout_toEndOf="@+id/textItemName"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:textColor="#A9A9A9"/>
+        android:textColor="#FFFFFF"
+        android:hint="Your item name"
+        android:textColorHint="#808080"/>
 
     <TextView
         android:text="Quantity"
@@ -125,22 +127,22 @@
         android:textColor="#FFFFFF" />
 
     <EditText
-        android:text="10.00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/userPrice"
         android:layout_alignBaseline="@+id/textPriceItems"
         android:layout_alignBottom="@+id/textPriceItems"
         android:layout_toRightOf="@+id/textPriceItems"
         android:layout_toEndOf="@+id/textPriceItems"
         android:layout_marginLeft="54dp"
         android:layout_marginStart="54dp"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:hint="10.00"
+        android:textColorHint="#808080"/>
 
     <EditText
-        android:text="Your vendor here"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userVendor"
@@ -151,19 +153,22 @@
         android:layout_marginTop="85dp"
         android:layout_below="@+id/textItemName"
         android:layout_marginStart="12dp"
-        android:textColor="#A9A9A9"/>
+        android:textColor="#FFFFFF"
+        android:hint="Your vendor name"
+        android:textColorHint="#808080"/>
 
     <EditText
-        android:text="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/userQuantity"
         android:layout_below="@+id/userItemName"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:textColor="#FFFFFF" />
+        android:layout_alignLeft="@+id/userPrice"
+        android:layout_alignStart="@+id/userPrice"
+        android:textColor="#FFFFFF"
+        android:hint="1"
+        android:textColorHint="#808080"/>
 
     <View
         android:layout_width="match_parent"
@@ -172,19 +177,6 @@
         android:layout_above="@+id/userItemName"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp" />
-
-    <Button
-        android:text="Done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/doneButton"
-        android:onClick="onButtonClick"
-        android:background="@drawable/button"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="47dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/userDate"
-        android:layout_alignEnd="@+id/userDate" />
 
     <TextView
         android:text="Vendor"
@@ -204,7 +196,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scanButton"
-        android:onClick="onButtonClick"
         android:background="@drawable/button"
         android:textColor="#FFFFFF"
         android:layout_alignBaseline="@+id/userBarcode"
@@ -217,10 +208,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pickDate"
-        android:onClick="onButtonClick"
         android:textColor="#FFFFFF"
         android:background="@drawable/button"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/pbbar"
+        android:layout_alignBottom="@+id/doneButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/userVendor"
+        android:layout_toRightOf="@+id/textItemName"
+        android:layout_toEndOf="@+id/textItemName" />
 </RelativeLayout>

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class ConnectionClass {
 
 
-    String ip = "192.168.1.124";
+    String ip = "192.168.1.117";
     String classs = "net.sourceforge.jtds.jdbc.Driver";
     String db = "Andro1";
     String un = "apptest";

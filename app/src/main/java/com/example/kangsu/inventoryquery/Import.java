@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -37,18 +38,20 @@ public class Import extends AppCompatActivity implements OnClickListener {
     private Button scannerButton;
     private EditText displayBarcode;
 
-    private Button importButton;
+    private Button doneButton;
     private ConnectionClass connectionClass;
     private EditText productName;
     private EditText quantity;
     private EditText price;
     private EditText vendor;
+    private ProgressBar pbbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.import_dashboard);
 
+        connectionClass = new ConnectionClass();
         //Calendar: Buttons
         changeDate = (Button)findViewById(R.id.pickDate);
         displayDate = (TextView)findViewById(R.id.userDate);
@@ -77,7 +80,16 @@ public class Import extends AppCompatActivity implements OnClickListener {
 
         });
 
-        importButton.setOnClickListener(new View.OnClickListener() {
+        //Import: Done
+        productName = (EditText)findViewById(R.id.userItemName);
+        quantity = (EditText)findViewById(R.id.userQuantity);
+        price = (EditText)findViewById(R.id.userPrice);
+        vendor = (EditText)findViewById(R.id.userVendor);
+        pbbar = (ProgressBar) findViewById(R.id.pbbar);
+        pbbar.setVisibility(View.GONE);
+
+        doneButton = (Button) findViewById(R.id.doneButton);
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DoImport doImport = new DoImport();
@@ -130,6 +142,7 @@ public class Import extends AppCompatActivity implements OnClickListener {
             toast.show();
         }
     }
+    //Import: Done Function
     public class DoImport extends AsyncTask<String,String,String>
     {
         String z = "";
@@ -137,36 +150,45 @@ public class Import extends AppCompatActivity implements OnClickListener {
 
 
         String userScanned = displayBarcode.getText().toString();
-        String userProduct = productName.getText().toString();
+        String userPName = productName.getText().toString();
         String userQuantity = quantity.getText().toString();
         String userPrice = price.getText().toString();
         String userVendor = vendor.getText().toString();
-
+        String userDate = displayDate.getText().toString();
 
         @Override
+        protected void onPreExecute() {
+            pbbar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String r) {
+            pbbar.setVisibility(View.GONE);
+            Toast.makeText(Import.this,r,Toast.LENGTH_SHORT).show();
+
+            if(isSuccess) {
+                Intent i = new Intent(Import.this, Dashboard.class);
+                startActivity(i);
+                finish();
+            }
+
+        }
+        @Override
         protected String doInBackground(String... params) {
-            if(userScanned.trim().equals(""))
-                z = "Please enter barcode!";
-//            if(userScanned.trim().equals("")|| userProduct.trim().equals("") || userQuantity.trim().equals("") || userPrice.trim().equals("") || userVendor.trim().equals(""))
-//                z = "Please enter all required criteria!";
+
+            if(userScanned.trim().equals("") || userPName.trim().equals("") || userQuantity.trim().equals("") || userPrice.trim().equals("") || userVendor.trim().equals(""))
+                z = "Please enter all required fields!";
             else {
                 try {
                     Connection con = connectionClass.CONN();
                     if (con == null) {
                         z = "Error in connection with SQL server";
                     } else {
-                        String query = "INSERT INTO Producttbl (SKU) VALUES ('" + userScanned + "')";
+                        String query = "INSERT INTO Producttbl (sku, pName, quantity, price, vendor, date) VALUES ('" + userScanned + "','" + userPName + "','" + userQuantity + "','" + userPrice + "', '" + userVendor + "', '" + userDate + "')";
                         Statement stmt = con.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
-
-                        if(rs.next()) {
-                            z = "Login successful";
-                            isSuccess=true;
-                        }
-                        else {
-                            z = "Invalid Credentials";
-                            isSuccess = false;
-                        }
+                        z = "Imported successfully!";
+                        stmt.executeUpdate(query);
+                        isSuccess = true;
                     }
                 }
                 catch (Exception ex) {

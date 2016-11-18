@@ -36,7 +36,7 @@
             android:textColorHint="#ffffff"
             android:background="#5d5d5d"
             android:padding="10dp"
-            android:hint="USER ID"
+            android:hint="USERNAME"
             android:textSize="20sp"
             android:id="@+id/userId" />
 
