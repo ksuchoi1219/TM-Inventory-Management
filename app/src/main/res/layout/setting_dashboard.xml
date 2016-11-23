@@ -1,96 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#282828"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context="com.example.kangsu.inventoryquery.Dashboard"
+    android:orientation="vertical">
 
-
-    <!-- Dark Grey = #282828 -->
-    <!-- Light Grey = #5d5d5d -->
-    <!-- Green = #00aa55 -->
-
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TM INVENTORY"
-        android:typeface="sans"
-        android:textSize="35sp"
-        android:textColor="#00aa55"
+        android:backgroundTint="#00aa55"
+        android:textColor="#ffffff"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginTop="60dp"
+        android:id="@+id/changeUNB"
+        android:text="Change username"
+        android:elevation="0dp" />
 
-    <LinearLayout
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:backgroundTint="#00aa55"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:padding="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="40dp"
+        android:id="@+id/changePB"
+        android:text="change password" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="CURRENT PASSWORD"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="bold"
-            android:background="#5d5d5d"
-            android:padding="10dp"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:id="@+id/userPassword" />
+    <ImageView
+        android:layout_width="101dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/trademark"
+        android:id="@+id/TM"
+        android:layout_gravity="center"
+        />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="NEW PASSWORD"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="bold"
-            android:background="#5d5d5d"
-            android:padding="10dp"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:id="@+id/newPassword" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:hint="CONFIRM PASSWORD"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="bold"
-            android:background="#5d5d5d"
-            android:padding="10dp"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:id="@+id/confirmNewPass" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00aa55"
-            android:textColor="#ffffff"
-
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/updateButton"
-            android:text="Update" />
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/pbbar" />
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

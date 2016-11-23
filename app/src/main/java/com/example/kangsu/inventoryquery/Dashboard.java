@@ -6,19 +6,39 @@ import android.os.Bundle;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 
-public class Dashboard extends AppCompatActivity{
+public class Dashboard extends AppCompatActivity {
 
     private Button inventoryButton;
     private Button importsButton;
     private Button settingButton;
+    private TextView greeting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         addListenerOnButton();
+
+
+
+        greeting = (TextView) findViewById(R.id.greeting);
+        Calendar c = Calendar.getInstance();
+        int timeofDay = c.get(Calendar.HOUR_OF_DAY);
+        if (timeofDay >= 0 && timeofDay < 12) {
+            greeting.setText("Good Monring, ");
+        } else if (timeofDay >= 12 && timeofDay < 16) {
+            greeting.setText("Good Afternoon, ");
+        } else if (timeofDay >= 16 && timeofDay < 21) {
+            greeting.setText("Good Evening, ");
+        } else {
+            greeting.setText("Good Night, ");
+        }
+
     }
 
     private void addListenerOnButton() {

@@ -20,12 +20,8 @@ import java.util.Date;
 public class Setting extends AppCompatActivity{
 
 
-    private ConnectionClass connectionClass;
-    private Button updateButton;
-    private EditText oldPass;
-    private EditText newPass;
-    private EditText confirmPass;
-    private ProgressBar pbbar;
+    private Button changeUNButton;
+    private Button changePButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,86 +29,23 @@ public class Setting extends AppCompatActivity{
         setContentView(R.layout.setting_dashboard);
         addListenerOnButton();
 
-        connectionClass = new ConnectionClass();
-        oldPass = (EditText) findViewById(R.id.userPassword);
-        newPass = (EditText) findViewById(R.id.newPassword);
-        confirmPass = (EditText) findViewById(R.id.confirmNewPass);
-        pbbar = (ProgressBar) findViewById(R.id.pbbar);
-        pbbar.setVisibility(View.GONE);
-        updateButton = (Button) findViewById(R.id.updateButton);
-
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DoUpdate doUpdate = new DoUpdate();
-                doUpdate.execute("");
-            }
-        });
-
-    }
-    public class DoUpdate extends AsyncTask<String,String,String> {
-        String z = "";
-        Boolean isSuccess = false;
-
-        String old = oldPass.getText().toString();
-        String newP = newPass.getText().toString();
-        String confNew = confirmPass.getText().toString();
-
-        @Override
-        protected void onPreExecute() {
-            pbbar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected void onPostExecute(String r) {
-            pbbar.setVisibility(View.GONE);
-            Toast.makeText(Setting.this,r,Toast.LENGTH_SHORT).show();
-
-            if(isSuccess) {
-                Intent i = new Intent(Setting.this, Dashboard.class);
-                startActivity(i);
-                finish();
-            }
-
-        }
-        @Override
-        protected String doInBackground(String... params) {
-            Date date = new Date();
-            String stringDate = DateFormat.getDateTimeInstance().format(date);
-            if(old.trim().equals("")|| newP.trim().equals("") || confNew.trim().equals(""))
-                z = "Please enter Username and Password!";
-            else if (!newP.trim().equals(confNew))
-                z = "Confirm password and password do not match!";
-            else {
-                try {
-                    Connection con = connectionClass.CONN();
-                    if (con == null) {
-                        z = "Error in connection with SQL server!";
-                    } else {
-                        String query = "UPDATE Usertbl SET password=" + "'" + newP + "' WHERE password='" + old + "';";
-                        Statement stmt = con.createStatement();
-                        z = "Updated successfully!";
-                        stmt.executeUpdate(query);
-                        isSuccess = true;
-
-                    }
-                }
-                catch (Exception ex) {
-                    isSuccess = false;
-                    z = ex.getMessage();
-                }
-            }
-            return z;
-        }
     }
     private void addListenerOnButton() {
         final Context context = this;
-        updateButton = (Button) findViewById(R.id.updateButton);
-        updateButton.setOnClickListener(new View.OnClickListener() {
+        changeUNButton = (Button) findViewById(R.id.changeUNB);
+        changeUNButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Dashboard.class);
-                    startActivity(intent);
+                Intent intent = new Intent(context, ChangeUsername.class);
+                startActivity(intent);
+            }
+        });
+
+        changePButton = (Button)findViewById(R.id.changePB);
+        changePButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), ChangePassword.class);
+                startActivityForResult(myIntent, 0);
             }
         });
     }

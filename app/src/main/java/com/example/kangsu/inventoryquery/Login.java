@@ -38,7 +38,6 @@ public class Login extends AppCompatActivity{
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
                 DoLogin doLogin = new DoLogin();
@@ -47,6 +46,8 @@ public class Login extends AppCompatActivity{
             }
         });
         addListenerOnButton();
+
+
     }
 
     private void addListenerOnButton() {
@@ -65,7 +66,6 @@ public class Login extends AppCompatActivity{
         String z = "";
         Boolean isSuccess = false;
 
-
         String userid = edtuserid.getText().toString();
         String password = edtpass.getText().toString();
 
@@ -74,18 +74,15 @@ public class Login extends AppCompatActivity{
         protected void onPreExecute() {
             pbbar.setVisibility(View.VISIBLE);
         }
-
         @Override
         protected void onPostExecute(String r) {
             pbbar.setVisibility(View.GONE);
             Toast.makeText(Login.this,r,Toast.LENGTH_SHORT).show();
-
             if(isSuccess) {
                 Intent i = new Intent(Login.this, Dashboard.class);
                 startActivity(i);
                 finish();
             }
-
         }
 
         @Override
