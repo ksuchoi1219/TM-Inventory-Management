@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kangsu.inventoryquery">
+    package="com.TM.kwangsu.inventoryquery">
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -8,7 +8,8 @@
     <uses-feature android:name="android.hardware.camera"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:debuggable="false"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,12 +22,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard"></activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Inventory"></activity>
-        <activity android:name=".Import"></activity>
-        <activity android:name=".Setting"></activity>
-        <activity android:name=".ChangePassword"></activity>
-        <activity android:name=".ChangeUsername"></activity>
+        <activity android:name=".Add"></activity>
+        <activity android:name=".Update"></activity>
+        <activity android:name=".Purchase"></activity>
+
+
     </application>
 
 </manifest>

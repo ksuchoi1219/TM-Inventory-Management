@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#282828"
+    android:background="#ffffff"
     android:padding="10dp">
 
 
-    <!-- Dark Grey = #282828 -->
-    <!-- Light Grey = #5d5d5d -->
+    <!-- Dark Grey = #222222 -->
+    <!-- Light Grey = #222222 -->
     <!-- Green = #00aa55 -->
 
     <LinearLayout
@@ -20,22 +21,34 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TM INVENTORY"
+            android:text="TM"
             android:typeface="sans"
             android:textSize="35sp"
-            android:textColor="#00aa55"
+            android:textColor="#222222"
             android:textStyle="bold"
             android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INVENTORY"
+            android:typeface="sans"
+            android:textSize="35sp"
+            android:textColor="#4682B4"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/textView2" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="45dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:textColorHint="#ffffff"
-            android:background="#5d5d5d"
+            android:background="#222222"
             android:padding="10dp"
+
             android:hint="USERNAME"
             android:textSize="20sp"
             android:id="@+id/userId" />
@@ -48,7 +61,7 @@
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:textStyle="bold"
-            android:background="#5d5d5d"
+            android:background="#222222"
             android:padding="10dp"
             android:inputType="textPassword"
             android:layout_marginTop="5dp"
@@ -57,30 +70,27 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00aa55"
+            android:backgroundTint="#4682B4"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:textSize="20sp"
             android:padding="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/loginButton"
             android:text="Login" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00aa55"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/registerButton"
-            android:text="Register" />
+
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/pbbar" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/icon"
+            android:id="@+id/imageView"
+            android:layout_marginTop="15dp"/>
     </LinearLayout>
 </RelativeLayout>
