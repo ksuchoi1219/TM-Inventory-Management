@@ -17,7 +17,7 @@ public class ConnectionClass {
 
     String ip = "192.168.1.2";
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    String db = "Inventory";
+    String db = "TMatrix0";
     String un = "steve1";
     String password = "1234okok";
     @SuppressLint("NewApi")

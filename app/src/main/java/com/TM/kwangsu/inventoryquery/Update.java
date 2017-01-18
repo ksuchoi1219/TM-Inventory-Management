@@ -84,8 +84,8 @@ public class Update extends AppCompatActivity{
         }
         @Override
         protected String doInBackground(String... params) {
-            if(userBar.trim().equals("")|| newName.trim().equals(""))
-                z = "Please fill all the required fields!";
+            if(userBar.trim().equals("")||newName.trim().equals("")||newStock.trim().equals("")||newDescription.trim().equals("")||newPrice.trim().equals(""))
+                z = "Please enter all required fields!";
 
             else {
                 try {
@@ -93,12 +93,11 @@ public class Update extends AppCompatActivity{
                     if (con == null) {
                         z = "Error in connection with SQL server!";
                     } else {
-                        String query = "update Producttbl set pName = '" + newName + "',quantity = '" + newStock + "',price = '" + newPrice + "',description = '" + newDescription + "' where sku = '" + userBar + "';";
+                        String query = "update dbo.products set product_name = '"+newName+"', stock = '"+newStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
                         Statement stmt = con.createStatement();
                         z = "Updated successfully!";
                         stmt.executeUpdate(query);
                         isSuccess = true;
-
                     }
                 }
                 catch (Exception ex) {

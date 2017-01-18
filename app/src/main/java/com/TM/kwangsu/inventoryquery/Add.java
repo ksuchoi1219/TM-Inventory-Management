@@ -3,6 +3,8 @@ package com.TM.kwangsu.inventoryquery;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,11 +47,13 @@ public class Add extends AppCompatActivity implements OnClickListener {
     private EditText vendor;
     private EditText description;
     private ProgressBar pbbar;
+    private String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
+
 
         connectionClass = new ConnectionClass();
         //Calendar: Buttons
@@ -149,12 +153,12 @@ public class Add extends AppCompatActivity implements OnClickListener {
         String z = "";
         Boolean isSuccess = false;
 
-
+        SharedPreferences prefs = getSharedPreferences("MA", MODE_PRIVATE);
+        String username = prefs.getString("UN", "UNKNOWN");
         String userScanned = displayBarcode.getText().toString();
         String userPName = productName.getText().toString();
         String userQuantity = quantity.getText().toString();
         String userPrice = price.getText().toString();
-        String userVendor = vendor.getText().toString();
         String userDate = displayDate.getText().toString();
         String userDescription = description.getText().toString();
 
@@ -178,7 +182,7 @@ public class Add extends AppCompatActivity implements OnClickListener {
         @Override
         protected String doInBackground(String... params) {
 
-            if(userScanned.trim().equals("") || userPName.trim().equals("") || userQuantity.trim().equals("") || userPrice.trim().equals("") || userVendor.trim().equals(""))
+            if(userScanned.trim().equals("") || userPName.trim().equals("") || userQuantity.trim().equals("") || userPrice.trim().equals("") || userDescription.trim().equals(""))
                 z = "Please enter all required fields!";
             else {
                 try {
@@ -186,7 +190,32 @@ public class Add extends AppCompatActivity implements OnClickListener {
                     if (con == null) {
                         z = "Error in connection with SQL server";
                     } else {
-                        String query = "INSERT INTO Producttbl (sku, pName, quantity, price, vendor, date, description) VALUES ('" + userScanned + "','" + userPName + "','" + userQuantity + "','" + userPrice + "', '" + userVendor + "', '" + userDate + "', '" + userDescription + "');";
+                        String query = "insert into dbo.products" +
+                                "(" +
+                                "MerchantMasterID, Merchant, brand_id, mftr_id, is_main," +
+                                "main_img, main_img_I, upc_code, lava_code, sku_code," +
+                                "colorCode, sizeIdx, other, pos_sku, product_sku, " +
+                                "product_name, location_code, material, brief, description, " +
+                                "description_html, bullet_1, bullet_2, bullet_3, bullet_4, " +
+                                "bullet_5, weight, cost, wholesalePrice, price, " +
+                                "msrp, price_r, min_qty, stock, soldout_date, " +
+                                "display_order, is_on, is_on_r, is_on_i, is_new, " +
+                                "date_insert, date_update, note, Iprice_A, Iprice_B," +
+                                "Iprice_C, openpricecheck)" +
+                                
+                                "values" +
+                                "(" +
+                                " NULL, '"+username+"', NULL, NULL, 1," +
+                                " NULL, 'no_photo.jpg', NULL, NULL, '"+username+"-"+userScanned+"'," +
+                                " '-', NULL, NULL, '"+userScanned+"', '"+username+"-"+userScanned+"'," +
+                                " NULL, 'N/A', NULL, NULL, '"+userDescription+"'," +
+                                " 1, NULL, NULL, NULL, NULL," +
+                                " NULL, 0, 0.00, 0.00, "+userPrice+"," +
+                                " 0.00, 0.00, 1, "+userQuantity+", NULL," +
+                                " NULL, 0, 0, 0, 0," +
+                                " '"+userDate+"', '"+userDate+"', NULL, 0.00, 0.00," +
+                                " 0.00, 'NO');";
+
                         Statement stmt = con.createStatement();
                         z = "Imported successfully!";
                         stmt.executeUpdate(query);

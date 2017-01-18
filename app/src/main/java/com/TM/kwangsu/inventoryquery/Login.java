@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity{
                     if (con == null) {
                         z = "Error in connection with SQL server!";
                     } else {
-                        String query = "select * from dbo.Usertbl where username='" + userid + "' and password='" + password + "'";
+                        String query = "select loginid, password from users where loginid='" + userid + "' and password='" + password + "'";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
 
