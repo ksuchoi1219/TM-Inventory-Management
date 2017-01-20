@@ -1,6 +1,5 @@
 package com.TM.kwangsu.inventoryquery;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -98,7 +97,7 @@ public class Login extends AppCompatActivity{
                 }
                 catch (Exception ex) {
                     isSuccess = false;
-                    z = "Exceptions";
+                    z = ex.getMessage();
                 }
             }
             return z;

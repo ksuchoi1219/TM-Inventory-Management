@@ -9,17 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
+
 
 
 public class Update extends AppCompatActivity{
 
-
     private ConnectionClass connectionClass;
     private Button updateButton;
+    private Button findButton;
     private Button poButton;
     private EditText userSKU;
     private EditText userPname;
@@ -27,6 +29,13 @@ public class Update extends AppCompatActivity{
     private EditText userDescription;
     private EditText userPrice;
     private ProgressBar pbbar;
+
+    private TextView prePName;
+    private TextView preStock;
+    private TextView prePrice;
+    private TextView preDescription;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +52,39 @@ public class Update extends AppCompatActivity{
 
         pbbar = (ProgressBar) findViewById(R.id.pbbar);
         pbbar.setVisibility(View.GONE);
+
+        prePName = (TextView) findViewById(R.id.nameTV);
+        preStock = (TextView) findViewById(R.id.stockTV);
+        prePrice = (TextView) findViewById(R.id.priceTV);
+        preDescription = (TextView) findViewById(R.id.desTV);
+
         updateButton = (Button) findViewById(R.id.updateButton);
+        findButton = (Button) findViewById(R.id.findButton);
         poButton = (Button) findViewById(R.id.poButton);
+
+        findButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userBar = userSKU.getText().toString();
+                Connection con = connectionClass.CONN();
+                String query = "select product_name, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
+                ResultSet rs;
+                try {
+                    Statement stmt = con.createStatement();
+                    rs = stmt.executeQuery(query);
+                    while (rs.next()) {
+                        prePName.setText(rs.getString(1));
+                        preStock.setText(rs.getString(2));
+                        prePrice.setText(rs.getString(3));
+                        preDescription.setText(rs.getString(4));
+                    }
+                    con.close();
+
+                } catch (Exception ex) {
+                    ex.getMessage();
+                }
+            }
+        });
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +94,7 @@ public class Update extends AppCompatActivity{
         });
 
     }
+
     public class DoUpdate extends AsyncTask<String,String,String> {
         String z = "";
         Boolean isSuccess = false;
@@ -80,10 +121,10 @@ public class Update extends AppCompatActivity{
                 startActivity(i);
                 finish();
             }
-
         }
         @Override
         protected String doInBackground(String... params) {
+
             if(userBar.trim().equals("")||newName.trim().equals("")||newStock.trim().equals("")||newDescription.trim().equals("")||newPrice.trim().equals(""))
                 z = "Please enter all required fields!";
 
@@ -114,7 +155,7 @@ public class Update extends AppCompatActivity{
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Dashboard.class);
+                Intent intent = new Intent(context, Update.class);
                     startActivity(intent);
             }
         });
