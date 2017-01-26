@@ -61,13 +61,7 @@ public class Dashboard extends AppCompatActivity {
                 startActivityForResult(myIntent, 0);
             }
         });
-//        poButton = (Button)findViewById(R.id.poButton);
-//        poButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent myIntent = new Intent(view.getContext(), Purchase.class);
-//                startActivityForResult(myIntent, 0);
-//            }
-//        });
+
     }
 
 }

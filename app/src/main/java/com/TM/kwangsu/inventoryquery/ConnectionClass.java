@@ -18,8 +18,8 @@ public class ConnectionClass {
     String ip = "thanksmatrix.com"; //thanksmatrix.com
     String classs = "net.sourceforge.jtds.jdbc.Driver";
     String db = "TMatrix"; //TMatrix
-    String un = ""; //dd
-    String password = "";
+    String un = "TMatrix"; //
+    String password = "TxDlwel&G&x&D7l7G7w*T*YlDelqSlzhsM";
     @SuppressLint("NewApi")
     public Connection CONN() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
