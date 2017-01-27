@@ -33,13 +33,15 @@ public class Add extends AppCompatActivity implements OnClickListener {
     private int mDay;
     static final int DATE_PICKER_ID = 1111;
     private TextView displayDate;
+    //Connection Class
+    private ConnectionClass connectionClass;
 
     //Barcode Scan: Variables
     private Button scannerButton;
     private EditText displayBarcode;
 
     private Button doneButton;
-    private ConnectionClass connectionClass;
+
     private EditText productName;
     private EditText quantity;
     private EditText price;

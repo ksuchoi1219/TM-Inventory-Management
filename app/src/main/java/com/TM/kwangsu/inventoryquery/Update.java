@@ -15,19 +15,24 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
+import com.zxing.integration.android.IntentIntegrator;
+import com.zxing.integration.android.IntentResult;
 
 public class Update extends AppCompatActivity{
 
     private ConnectionClass connectionClass;
+
+    private Button scannerButton;
     private Button updateButton;
     private Button findButton;
     private Button poButton;
+
     private EditText userSKU;
     private EditText userPname;
     private EditText userStock;
     private EditText userDescription;
     private EditText userPrice;
+
     private ProgressBar pbbar;
 
     private TextView prePName;
@@ -58,6 +63,8 @@ public class Update extends AppCompatActivity{
         prePrice = (TextView) findViewById(R.id.priceTV);
         preDescription = (TextView) findViewById(R.id.desTV);
 
+        scannerButton = (Button) findViewById(R.id.scanButton);
+        scannerButton.setOnClickListener((View.OnClickListener) this);
         updateButton = (Button) findViewById(R.id.updateButton);
         findButton = (Button) findViewById(R.id.findButton);
         poButton = (Button) findViewById(R.id.poButton);
@@ -94,7 +101,22 @@ public class Update extends AppCompatActivity{
         });
 
     }
-
+    public void onClick(View v) {
+        if (v.getId() == R.id.scanButton) {
+            IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+            scanIntegrator.initiateScan();
+        }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanningResult != null) {
+            String scanContent = scanningResult.getContents();
+            userSKU.setText(scanContent);
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "No scan data received!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
     public class DoUpdate extends AsyncTask<String,String,String> {
         String z = "";
         Boolean isSuccess = false;
