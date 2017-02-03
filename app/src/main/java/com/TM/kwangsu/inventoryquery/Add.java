@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -54,7 +56,6 @@ public class Add extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
-
 
         connectionClass = new ConnectionClass();
         //Calendar: Buttons
@@ -105,6 +106,7 @@ public class Add extends AppCompatActivity implements OnClickListener {
         });
 
     }
+
     //Calendar: Date Picker
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -172,7 +174,7 @@ public class Add extends AppCompatActivity implements OnClickListener {
         protected void onPostExecute(String r) {
             pbbar.setVisibility(View.GONE);
             Toast.makeText(Add.this,r,Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getBaseContext(), userPName,  Toast.LENGTH_SHORT).show();
             if(isSuccess) {
                 Intent i = new Intent(Add.this, Dashboard.class);
                 startActivity(i);
@@ -193,29 +195,30 @@ public class Add extends AppCompatActivity implements OnClickListener {
                     } else {
                         String query = "insert into dbo.products" +
                                 "(" +
-                                "MerchantMasterID, Merchant, brand_id, mftr_id, is_main," +
-                                "main_img, main_img_I, upc_code, lava_code, sku_code," +
+                                "MerchantMasterID, Merchant, brand_id, mftr_id, is_main, " +
+                                "main_img, main_img_I, upc_code, lava_code, sku_code, " +
                                 "colorCode, sizeIdx, other, pos_sku, product_sku, " +
                                 "product_name, location_code, material, brief, description, " +
                                 "description_html, bullet_1, bullet_2, bullet_3, bullet_4, " +
-                                "bullet_5, weight, cost, wholesalePrice, price, " +
-                                "msrp, price_r, min_qty, stock, soldout_date, " +
-                                "display_order, is_on, is_on_r, is_on_i, is_new, " +
-                                "date_insert, date_update, note, Iprice_A, Iprice_B," +
-                                "Iprice_C, openpricecheck)" +
-                                
+                                "bullet_5, weight, pv, cost, wholesalePrice, " +
+                                "price, msrp, price_r, min_qty, stock, " +
+                                "soldout_date, display_order, is_on, is_on_r, is_on_i, " +
+                                "is_new, date_insert, date_update, note, Iprice_A, " +
+                                "Iprice_B, Iprice_C, openpricecheck, eubliss_is_on, is_set)" +
+
                                 "values" +
                                 "(" +
-                                " NULL, '"+username+"', NULL, NULL, 1," +
-                                " NULL, 'no_photo.jpg', NULL, NULL, '"+username+"-"+userScanned+"'," +
-                                " '-', NULL, NULL, '"+userScanned+"', '"+username+"-"+userScanned+"'," +
-                                " NULL, 'N/A', NULL, NULL, '"+userDescription+"'," +
-                                " 1, NULL, NULL, NULL, NULL," +
-                                " NULL, 0, 0.00, 0.00, "+userPrice+"," +
-                                " 0.00, 0.00, 1, "+userQuantity+", NULL," +
-                                " NULL, 0, 0, 0, 0," +
-                                " '"+userDate+"', '"+userDate+"', NULL, 0.00, 0.00," +
-                                " 0.00, 'NO');";
+                                "'" + username + "', '" + username + "', NULL, NULL, 1," +
+                                "NULL, 'no_photo.jpg', NULL, NULL, '" + username + "-" + userScanned + "', '" +
+                                "-', NULL, NULL, '" + userScanned + "', '" + username + "-" + userScanned + "', " +
+                                "NULL, 'N/A', NULL, '" + userPName + "', '" + userDescription + "', " +
+                                "1, NULL, NULL, NULL, NULL, " +
+                                "NULL, 0, 0, 0.00, 0.00, " +
+                                "'" + userPrice + "', 0, 0, 1, " + userQuantity + ", " +
+                                "NULL, NULL, 0, 0, 0, " +
+                                "0, '" + userDate + "', '" + userDate + "', NULL, 0.00," +
+                                "0.00, 0.00, 'NO', 0, NULL);";
+
 
                         Statement stmt = con.createStatement();
                         z = "Imported successfully!";

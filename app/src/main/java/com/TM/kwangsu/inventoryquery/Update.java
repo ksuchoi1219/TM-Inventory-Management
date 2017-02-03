@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,14 +20,13 @@ import java.sql.Statement;
 import com.zxing.integration.android.IntentIntegrator;
 import com.zxing.integration.android.IntentResult;
 
-public class Update extends AppCompatActivity{
+public class Update extends AppCompatActivity implements View.OnClickListener {
 
     private ConnectionClass connectionClass;
 
     private Button scannerButton;
     private Button updateButton;
     private Button findButton;
-    private Button poButton;
 
     private EditText userSKU;
     private EditText userPname;
@@ -35,10 +36,6 @@ public class Update extends AppCompatActivity{
 
     private ProgressBar pbbar;
 
-    private TextView prePName;
-    private TextView preStock;
-    private TextView prePrice;
-    private TextView preDescription;
 
 
 
@@ -49,47 +46,49 @@ public class Update extends AppCompatActivity{
         addListenerOnButton();
 
         connectionClass = new ConnectionClass();
-        userSKU = (EditText) findViewById(R.id.userBarcode);
         userPname = (EditText) findViewById(R.id.userItemName);
         userStock = (EditText) findViewById(R.id.userQuantity);
-        userDescription = (EditText) findViewById(R.id.userDescription);
         userPrice = (EditText) findViewById(R.id.userPrice);
+        userDescription = (EditText) findViewById(R.id.userDescription);
 
         pbbar = (ProgressBar) findViewById(R.id.pbbar);
         pbbar.setVisibility(View.GONE);
 
-        prePName = (TextView) findViewById(R.id.nameTV);
-        preStock = (TextView) findViewById(R.id.stockTV);
-        prePrice = (TextView) findViewById(R.id.priceTV);
-        preDescription = (TextView) findViewById(R.id.desTV);
 
         scannerButton = (Button) findViewById(R.id.scanButton);
-        scannerButton.setOnClickListener((View.OnClickListener) this);
+        userSKU = (EditText) findViewById(R.id.userBarcode);
+        scannerButton.setOnClickListener(this);
         updateButton = (Button) findViewById(R.id.updateButton);
         findButton = (Button) findViewById(R.id.findButton);
-        poButton = (Button) findViewById(R.id.poButton);
+
 
         findButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userBar = userSKU.getText().toString();
-                Connection con = connectionClass.CONN();
-                String query = "select product_name, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
-                ResultSet rs;
-                try {
-                    Statement stmt = con.createStatement();
-                    rs = stmt.executeQuery(query);
-                    while (rs.next()) {
-                        prePName.setText(rs.getString(1));
-                        preStock.setText(rs.getString(2));
-                        prePrice.setText(rs.getString(3));
-                        preDescription.setText(rs.getString(4));
-                    }
-                    con.close();
+                if (userBar.equals("")) {
+                    Toast.makeText(getBaseContext(), "Please enter barcode above!",  Toast.LENGTH_SHORT).show();
 
-                } catch (Exception ex) {
-                    ex.getMessage();
+                } else {
+                    Connection con = connectionClass.CONN();
+                    String query = "select product_name, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
+                    ResultSet rs;
+                    try {
+                        Statement stmt = con.createStatement();
+                        rs = stmt.executeQuery(query);
+                        while (rs.next()) {
+                            userPname.setText(rs.getString(1), TextView.BufferType.EDITABLE);
+                            userStock.setText(rs.getString(2), TextView.BufferType.EDITABLE);
+                            userPrice.setText(rs.getString(3), TextView.BufferType.EDITABLE);
+                            userDescription.setText(rs.getString(4), TextView.BufferType.EDITABLE);
+                        }
+                        con.close();
+
+                    } catch (Exception ex) {
+                        ex.getMessage();
+                    }
                 }
+
             }
         });
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +100,7 @@ public class Update extends AppCompatActivity{
         });
 
     }
+
     public void onClick(View v) {
         if (v.getId() == R.id.scanButton) {
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);

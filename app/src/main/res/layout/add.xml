@@ -49,7 +49,7 @@
         android:layout_height="30dp"
         android:id="@+id/pickDate"
         android:textColor="#ffffff"
-        android:background="@drawable/button"
+        android:background="@drawable/smallb"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:id="@+id/scanButton"
-        android:background="@drawable/button"
+        android:background="@drawable/smallb"
         android:textColor="#ffffff"
         android:layout_alignTop="@+id/userBarcode"
         android:layout_marginTop="4dp"
@@ -255,7 +255,7 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:id="@+id/doneButton"
-        android:background="@drawable/button"
+        android:background="@drawable/smallb"
         android:textColor="#ffffff"
         android:layout_marginTop="350dp"
         android:layout_marginLeft="131dp" />
