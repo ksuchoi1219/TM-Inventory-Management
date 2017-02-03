@@ -71,7 +71,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
 
                 } else {
                     Connection con = connectionClass.CONN();
-                    String query = "select product_name, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
+                    String query = "select brief, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
                     ResultSet rs;
                     try {
                         Statement stmt = con.createStatement();
@@ -156,7 +156,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
                     if (con == null) {
                         z = "Error in connection with SQL server!";
                     } else {
-                        String query = "update dbo.products set product_name = '"+newName+"', stock = '"+newStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
+                        String query = "update dbo.products set brief = '"+newName+"', stock = '"+newStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
                         Statement stmt = con.createStatement();
                         z = "Updated successfully!";
                         stmt.executeUpdate(query);
