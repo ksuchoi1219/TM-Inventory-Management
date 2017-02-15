@@ -30,9 +30,6 @@
         <activity android:name=".Update">
 
         </activity>
-
-
-
     </application>
 
 </manifest>

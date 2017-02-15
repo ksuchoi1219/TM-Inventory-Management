@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +32,11 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
     private EditText userSKU;
     private EditText userPname;
     private EditText userStock;
+    private EditText userNewStock;
     private EditText userDescription;
     private EditText userPrice;
-
     private ProgressBar pbbar;
-
+    private String totalStock;
 
 
 
@@ -48,9 +49,9 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         connectionClass = new ConnectionClass();
         userPname = (EditText) findViewById(R.id.userItemName);
         userStock = (EditText) findViewById(R.id.userQuantity);
+        userNewStock = (EditText) findViewById(R.id.userNewQuantity);
         userPrice = (EditText) findViewById(R.id.userPrice);
         userDescription = (EditText) findViewById(R.id.userDescription);
-
         pbbar = (ProgressBar) findViewById(R.id.pbbar);
         pbbar.setVisibility(View.GONE);
 
@@ -81,6 +82,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
                             userStock.setText(rs.getString(2), TextView.BufferType.EDITABLE);
                             userPrice.setText(rs.getString(3), TextView.BufferType.EDITABLE);
                             userDescription.setText(rs.getString(4), TextView.BufferType.EDITABLE);
+                            userNewStock.setText("0");
                         }
                         con.close();
 
@@ -107,6 +109,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
             scanIntegrator.initiateScan();
         }
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
@@ -126,6 +129,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         String newStock = userStock.getText().toString();
         String newDescription = userDescription.getText().toString();
         String newPrice = userPrice.getText().toString();
+        String unewStock = userNewStock.getText().toString();
 
 
         @Override
@@ -156,7 +160,13 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
                     if (con == null) {
                         z = "Error in connection with SQL server!";
                     } else {
-                        String query = "update dbo.products set brief = '"+newName+"', stock = '"+newStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
+                        if (unewStock != null) {
+                            int original = Integer.parseInt(newStock);
+                            int newItems = Integer.parseInt(unewStock);
+
+                            totalStock = Integer.toString(original + newItems);
+                        }
+                        String query = "update dbo.products set brief = '"+newName+"', stock = '"+totalStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
                         Statement stmt = con.createStatement();
                         z = "Updated successfully!";
                         stmt.executeUpdate(query);

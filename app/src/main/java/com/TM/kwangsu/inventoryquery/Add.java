@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,10 +15,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.zxing.integration.android.IntentIntegrator;
 import com.zxing.integration.android.IntentResult;
-
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Calendar;
@@ -174,7 +170,6 @@ public class Add extends AppCompatActivity implements OnClickListener {
         protected void onPostExecute(String r) {
             pbbar.setVisibility(View.GONE);
             Toast.makeText(Add.this,r,Toast.LENGTH_SHORT).show();
-            Toast.makeText(getBaseContext(), userPName,  Toast.LENGTH_SHORT).show();
             if(isSuccess) {
                 Intent i = new Intent(Add.this, Dashboard.class);
                 startActivity(i);
@@ -200,6 +195,7 @@ public class Add extends AppCompatActivity implements OnClickListener {
                                 "colorCode, sizeIdx, other, pos_sku, product_sku, " +
                                 "product_name, location_code, material, brief, description, " +
                                 "description_html, bullet_1, bullet_2, bullet_3, bullet_4, " +
+
                                 "bullet_5, weight, pv, cost, wholesalePrice, " +
                                 "price, msrp, price_r, min_qty, stock, " +
                                 "soldout_date, display_order, is_on, is_on_r, is_on_i, " +
@@ -213,8 +209,9 @@ public class Add extends AppCompatActivity implements OnClickListener {
                                 "-', NULL, NULL, '" + userScanned + "', '" + username + "-" + userScanned + "', " +
                                 "NULL, 'N/A', NULL, '" + userPName + "', '" + userDescription + "', " +
                                 "1, NULL, NULL, NULL, NULL, " +
+
                                 "NULL, 0, 0, 0.00, 0.00, " +
-                                "'" + userPrice + "', 0, 0, 1, " + userQuantity + ", " +
+                                "'" + userPrice + "', '" + userPrice + "', '" + userPrice + "', 1, " + userQuantity + ", " +
                                 "NULL, NULL, 0, 0, 0, " +
                                 "0, '" + userDate + "', '" + userDate + "', NULL, 0.00," +
                                 "0.00, 0.00, 'NO', 0, NULL);";
