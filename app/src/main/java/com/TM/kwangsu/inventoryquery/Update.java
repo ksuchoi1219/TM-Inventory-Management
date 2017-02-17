@@ -2,6 +2,7 @@ package com.TM.kwangsu.inventoryquery;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -37,6 +38,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
     private EditText userPrice;
     private ProgressBar pbbar;
     private String totalStock;
+    private String username;
 
 
 
@@ -45,7 +47,8 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update);
         addListenerOnButton();
-
+        SharedPreferences prefs = getSharedPreferences("MA", MODE_PRIVATE);
+        username = prefs.getString("UN", "UNKNOWN");
         connectionClass = new ConnectionClass();
         userPname = (EditText) findViewById(R.id.userItemName);
         userStock = (EditText) findViewById(R.id.userQuantity);
@@ -72,7 +75,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
 
                 } else {
                     Connection con = connectionClass.CONN();
-                    String query = "select brief, stock, price, description from dbo.products where pos_sku='" + userBar + "';";
+                    String query = "select brief, stock, price, description from dbo.products where pos_sku='" + userBar + "' and Merchant = '" + username + "';";
                     ResultSet rs;
                     try {
                         Statement stmt = con.createStatement();
@@ -85,7 +88,9 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
                             userNewStock.setText("0");
                         }
                         con.close();
-
+                        if (userPname.getText().toString().equals("") && userStock.getText().toString().equals("") && userPrice.getText().toString().equals("") && userDescription.getText().toString().equals("")) {
+                            Toast.makeText(getBaseContext(), "No such item in database!",  Toast.LENGTH_SHORT).show();
+                        }
                     } catch (Exception ex) {
                         ex.getMessage();
                     }
@@ -166,7 +171,7 @@ public class Update extends AppCompatActivity implements View.OnClickListener {
 
                             totalStock = Integer.toString(original + newItems);
                         }
-                        String query = "update dbo.products set brief = '"+newName+"', stock = '"+totalStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"';";
+                        String query = "update dbo.products set brief = '"+newName+"', stock = '"+totalStock+"', description = '"+newDescription+"', price= '"+newPrice+"' where pos_sku = '"+userBar+"' and Merchant = '" + username + "';";
                         Statement stmt = con.createStatement();
                         z = "Updated successfully!";
                         stmt.executeUpdate(query);
